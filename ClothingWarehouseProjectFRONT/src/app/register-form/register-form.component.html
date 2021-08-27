@@ -1,0 +1,43 @@
+<div class="row">
+
+  <form [formGroup]="userService.form" (ngSubmit)="onSubmit()" class="normal-form">
+
+    <mat-form-field class="col-12 my-1" hintLabel="Max 30 characters" appearance="fill">
+      <mat-label>Firstname</mat-label>
+      <input matInput formControlName="firstname" #firstname maxlength="30" placeholder="Ex. John">
+      <mat-hint align="end">{{firstname.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="col-12 my-1" hintLabel="Max 30 characters" appearance="fill">
+      <mat-label>Lastname</mat-label>
+      <input matInput formControlName="lastname" #lastname maxlength="30" placeholder="Ex. Doe">
+      <mat-hint align="end">{{lastname.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="col-12 my-1" hintLabel="Max 100 characters" appearance="fill">
+      <mat-label>e-mail</mat-label>
+      <input matInput formControlName="email" #email maxlength="100" placeholder="Ex. johndoe@gmail.com">
+      <mat-hint align="end">{{email.value?.length || 0}}/100</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="col-12 my-1" hintLabel="Max 30 characters" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" #username minlength="3" maxlength="30" placeholder="Ex. johndoe29">
+      <mat-hint align="end">{{username.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="col-12 my-1" hintLabel="Max 24 characters" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" #password minlength="4" maxlength="24" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-hint align="end">{{password.value?.length || 0}}/24</mat-hint>
+    </mat-form-field>
+
+    <button class="col-12" [disabled]="userService.form.invalid" mat-raised-button color="primary">Register</button>
+  </form>
+</div>
+
+

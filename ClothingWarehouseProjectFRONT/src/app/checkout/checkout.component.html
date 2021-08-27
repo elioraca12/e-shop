@@ -1,0 +1,73 @@
+<div class="container-fluid h-100">
+  <div class="row">
+    <div class="col-6 p-5">
+
+      <h1 class="py-1">
+        We thank you for choosing us {{order.tokenUser.sub}}
+      </h1>
+
+      <h3 class="py-1">
+        The '{{order.inventoryEntry.product.name}}'
+        of size '{{order.inventoryEntry.size.sizeNaming.fullName}}'
+        you want to order
+        costs {{order.quantity * (order.inventoryEntry.product.price + order.inventoryEntry.product.commission + order.inventoryEntry.size.surcharge)}}
+        $
+        in total.
+      </h3>
+
+      <h3 class="py-1">
+        Press "Confirm" to finalize the transaction or "Cancel" to navigate elsewhere.
+      </h3>
+
+      <div class="py-1">
+        <button (click)="confirmOrder()" ngxPrint printSectionId="receipt" mat-raised-button>Confirm</button>
+        <button (click)="back()" class="mx-4" mat-raised-button>Cancel</button>
+      </div>
+
+    </div>
+    <div class="col-6"></div>
+  </div>
+</div>
+
+<div id="receipt" hidden>
+  <div>
+    RECEIPT OF YOUR PRODUCT
+  </div>
+
+  <table style="border: 1px solid black" width="700px">
+    <tbody>
+    <tr class="p-1" style="border: 1px solid black">
+      <td>Product Name</td>
+      <td>{{order.inventoryEntry.product.name}}</td>
+    </tr>
+    <tr class="p-1">
+      <td>Product Size</td>
+      <td>{{order.inventoryEntry.size.sizeNaming.fullName}}</td>
+    </tr>
+    <tr class="p-1">
+      <td>Product Quantity</td>
+      <td>{{order.quantity}}</td>
+    </tr>
+    <tr class="p-1">
+      <td>Product Price</td>
+      <td>{{order.inventoryEntry.product.price}}</td>
+    </tr>
+    <tr class="p-1">
+      <td>Product Quantity</td>
+      <td>{{order.inventoryEntry.size.surcharge}}</td>
+    </tr>
+    <tr class="p-1">
+      <td>Product Price</td>
+      <td>{{order.inventoryEntry.product.commission}}</td>
+    </tr>
+    <tr class="p-1">
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="p-1">
+      <th colspan="2"> The total
+        is {{order.quantity * (order.inventoryEntry.product.price + order.inventoryEntry.product.commission + order.inventoryEntry.size.surcharge)}}</th>
+    </tr>
+    </tbody>
+  </table>
+</div>

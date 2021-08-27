@@ -1,0 +1,14 @@
+div{
+  background-color: #411756;
+}
+
+h1, h3{
+  font-weight: bold;
+  color: white;
+}
+
+.receiptFormat{
+  border-bottom: 2px solid black;
+}
+
+

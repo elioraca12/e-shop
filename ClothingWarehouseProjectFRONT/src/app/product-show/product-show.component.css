@@ -1,0 +1,17 @@
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.hide{
+  display: none;
+}
+
+mat-footer-row mat-footer-cell{
+  justify-content: center;
+}

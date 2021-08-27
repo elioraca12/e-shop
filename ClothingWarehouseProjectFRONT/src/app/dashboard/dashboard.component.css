@@ -1,0 +1,41 @@
+.horizontal-nav button{
+  border: none;
+  background-color: transparent;
+  color: white;
+  border-radius: 0;
+}
+
+.horizontal-nav{
+  background-image: url("https://wallpaperaccess.com/full/2008050.jpg");
+  background-size: cover;
+}
+
+.vertical-nav{
+  background-color: #ECEDEF;
+  color: #411756;
+}
+
+.vertical-nav button:after, .vertical-nav button:before{
+  background-color: transparent;
+}
+
+mat-grid-tile {
+  background: lightblue;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80');
+  background-size: cover;
+}
+
+#founder-img{
+  background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80');
+  height: 20em;
+  background-size: cover;
+}
+
+

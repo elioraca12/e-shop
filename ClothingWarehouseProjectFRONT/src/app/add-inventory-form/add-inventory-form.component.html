@@ -1,0 +1,63 @@
+<h2>Fill in the form to add a new inventory entry.</h2>
+
+<form [formGroup]="inventoryService.form" (ngSubmit)="onSubmit()" class="normal-form">
+
+  <input type="hidden" formControlName="$key">
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product name</mat-label>
+    <mat-select formControlName="product">
+      <mat-option *ngFor="let product of products" [value]="product">
+        {{ product.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product size</mat-label>
+    <mat-select formControlName="size">
+      <mat-option *ngFor="let size of sizes" [value]="size">
+        {{ size.sizeNaming.fullName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product state</mat-label>
+    <mat-select formControlName="inventoryState">
+      <mat-option *ngFor="let inventoryState of inventoryStates" [value]="inventoryState" [disabled]="inventoryState.id != 1">
+        {{ inventoryState.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product sold date</mat-label>
+    <input matInput formControlName="soldDate" [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product quantity</mat-label>
+    <input matInput formControlName="quantity">
+    <mat-error>This numeric field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product sold price</mat-label>
+    <input matInput formControlName="soldPrice">
+    <mat-error>This numeric field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <div class="col-12 d-flex justify-content-around">
+    <button class="col-5" mat-raised-button style="background-color:white; color: #411756" type="submit"
+            [disabled]="inventoryService.form.invalid">Add Product
+    </button>
+    <button class="col-5" mat-raised-button style="background-color: #411756; color: white" (click)="onClear()"
+            [disabled]="inventoryService.form.invalid">Clear
+    </button>
+  </div>
+
+</form>

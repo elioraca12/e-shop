@@ -1,0 +1,103 @@
+<div>
+
+  <div class="row d-flex justify-content-center">
+
+    <mat-form-field class="col-6" appearance="standard">
+      <mat-label>Search an inventory entry</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Dress" #input>
+    </mat-form-field>
+
+    <div class="d-flex justify-content-center align-items-center" style="
+    font-size: larger;
+    font-weight: bold;
+    color: #411756;
+
+">
+      or
+    </div>
+    <div class="col-4 d-flex justify-content-start align-items-center">
+      <button mat-raised-button style="background-color: #411756; color: #ECEDEF" (click)="addInventoryEntry()">add one</button>
+    </div>
+
+  </div>
+
+  <div class="col-12">
+    <div class="mat-elevation-z8">
+      <table mat-table matSort [dataSource]="dataSource">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+          <td class="py-2" mat-cell *matCellDef="let element" > {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="product">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+          <td class="py-2" mat-cell *matCellDef="let element"> {{element.product.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="size">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Size</th>
+          <td class="py-2" mat-cell *matCellDef="let element"> {{element.size.sizeNaming.fullName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="inventoryState">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+          <td class="py-2" mat-cell *matCellDef="let element"> {{element.inventoryState.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+          <td class="py-2" mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="soldDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Sold Date</th>
+          <td class="py-2" mat-cell *matCellDef="let element"> {{element.soldDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="soldPrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Sold Price</th>
+          <td class="py-2" mat-cell *matCellDef="let element"> {{element.soldPrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td class="py-2" mat-cell *matCellDef="let element">
+
+            <button  class="mx-3" style="background-color: #411756; color:#ECEDEF;" mat-mini-fab (click)="editInventoryEntry(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button class="mx-3" style="background-color: #411756; color:#ECEDEF;" mat-mini-fab (click)="deleteInventoryEntry(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="loading">
+          <mat-footer-cell *matFooterCellDef>
+            <mat-spinner color="accent"></mat-spinner>
+          </mat-footer-cell>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': inventoryData.length > 0}"></tr>
+
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+
+
+

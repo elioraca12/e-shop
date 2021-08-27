@@ -1,0 +1,22 @@
+<div class="row">
+  <form #login_form="ngForm" (ngSubmit)="authenticate(login_form.value)">
+
+    <mat-form-field class="col-12" hintLabel="Max 10 characters" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput ngModel #username name="username" maxlength="10" placeholder="Ex. elioraca12">
+      <mat-hint align="end">{{username.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="col-12" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput ngModel name="password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button type="submit" class="col-12" mat-raised-button color="primary">Log In</button>
+
+  </form>
+</div>

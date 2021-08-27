@@ -1,0 +1,48 @@
+<h2>Make the modifications to update the chosen product.</h2>
+
+<form [formGroup]="service.form" (ngSubmit)="onSubmit()" class="normal-form">
+
+  <input type="hidden" formControlName="$key">
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+    <mat-error>This field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+    <mat-error>This field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price">
+    <mat-error>This numeric field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Cost</mat-label>
+    <input matInput formControlName="cost">
+    <mat-error>This numeric field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Commission</mat-label>
+    <input matInput formControlName="commission">
+    <mat-error>This numeric field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <div class="col-12 d-flex justify-content-around">
+    <button class="col-5" mat-raised-button style="background-color:white; color: #411756" type="submit"
+            [disabled]="service.form.invalid">Update product
+    </button>
+    <button class="col-5" mat-raised-button style="background-color: #411756; color: white" (click)="onClear()"
+            [disabled]="service.form.invalid">Clear
+    </button>
+  </div>
+
+
+</form>
+

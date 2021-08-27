@@ -1,0 +1,72 @@
+<h2>Adjust the form to make the necessary updates on the product</h2>
+
+<form [formGroup]="inventoryService.form" (ngSubmit)="onSubmit()" class="normal-form">
+
+  <input type="hidden" formControlName="$key">
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product name</mat-label>
+    <mat-select formControlName="product" [(value)]="this.inventoryService.currentProduct.id">
+      <mat-option *ngFor="let product of products" [value]="product.id" >
+        {{ product.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product size</mat-label>
+    <mat-select formControlName="size" [(value)]="this.inventoryService.currentSize.id">
+      <mat-option *ngFor="let size of sizes" [value]="size.id">
+        {{ size.sizeNaming.fullName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product state</mat-label>
+    <mat-select formControlName="inventoryState" [(value)]="this.inventoryService.currentState.id">
+      <mat-option *ngFor="let inventoryState of inventoryStates" [value]="inventoryState.id">
+        {{ inventoryState.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product sold date</mat-label>
+    <input matInput formControlName="soldDate" [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product quantity</mat-label>
+    <input matInput formControlName="quantity">
+    <mat-error>This numeric field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="col-12" appearance="fill">
+    <mat-label>Product sold price</mat-label>
+    <input matInput formControlName="soldPrice">
+    <mat-error>This numeric field is mandatory.</mat-error>
+  </mat-form-field>
+
+  <div class="col-12 d-flex justify-content-around">
+    <button class="col-5" mat-raised-button style="background-color:white; color: #411756" type="submit"
+            [disabled]="inventoryService.form.invalid">Add Product
+    </button>
+    <button class="col-5" mat-raised-button style="background-color: #411756; color: white" (click)="onClear()"
+            [disabled]="inventoryService.form.invalid">Clear
+    </button>
+  </div>
+
+
+</form>
+
+
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Select</mat-label>-->
+<!--    <mat-select>-->
+<!--      <mat-option value="one">First option</mat-option>-->
+<!--      <mat-option value="two">Second option</mat-option>-->
+<!--    </mat-select>-->
+<!--  </mat-form-field>-->
